@@ -58,6 +58,8 @@ const clock = new THREE.Clock();
 const tick = () => {
   camera.position.x = cursor.x * 3;
   camera.position.y = cursor.y * 3;
+  camera.lookAt(mesh.position);
+
   renderer.render(scene, camera);
   window.requestAnimationFrame(tick);
 };
