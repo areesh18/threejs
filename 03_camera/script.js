@@ -1,6 +1,5 @@
 import * as THREE from "three";
-import gsap from "gsap";
-import { log } from "three/src/nodes/math/MathNode.js";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 const canvas = document.querySelector(".webgl");
 /*  console.log(gsap); */
 const cursor = {
@@ -43,6 +42,8 @@ camera.position.z = 4;
 camera.lookAt(mesh.position);
 scene.add(camera); //optional but good practice
 
+//Orbitcontrol-now you can drag-drop(right click) the cube, rotate,etc(left click) and zoom in & Out through wheel.
+const controls=new OrbitControls(camera, canvas)
 //Renderer
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
@@ -56,11 +57,6 @@ const clock = new THREE.Clock();
 //Animation
 
 const tick = () => {
-  camera.position.x = Math.sin(cursor.x*Math.PI*2)*3;
-  camera.position.z = Math.cos(cursor.x*Math.PI*2)*3;
-  camera.position.y=cursor.y*5;
-  camera.lookAt(mesh.position);
-
   renderer.render(scene, camera);
   window.requestAnimationFrame(tick);
 };
