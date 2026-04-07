@@ -33,11 +33,17 @@ renderer.setSize(sizes.width,sizes.height)
 
 renderer.render(scene, camera)
 
+let time=Date.now()
 //Animation
 const tick=()=>{
   /* console.log("tick") */
+  const currentTime=Date.now()
+  const deltaTime=currentTime-time
+  time=currentTime
+  console.log(deltaTime);
+
   //update object
-  mesh.rotation.y+=0.01
+  mesh.rotation.y+=0.002*deltaTime
   //render
   renderer.render(scene, camera)
   window.requestAnimationFrame(tick)
