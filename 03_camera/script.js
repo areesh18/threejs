@@ -43,7 +43,8 @@ camera.lookAt(mesh.position);
 scene.add(camera); //optional but good practice
 
 //Orbitcontrol-now you can drag-drop(right click) the cube, rotate,etc(left click) and zoom in & Out through wheel.
-const controls=new OrbitControls(camera, canvas)
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
 //Renderer
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
@@ -57,6 +58,7 @@ const clock = new THREE.Clock();
 //Animation
 
 const tick = () => {
+  controls.update();
   renderer.render(scene, camera);
   window.requestAnimationFrame(tick);
 };
