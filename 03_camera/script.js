@@ -56,8 +56,8 @@ const clock = new THREE.Clock();
 //Animation
 
 const tick = () => {
-  camera.position.x = Math.sin(cursor.x*10)*3;
-  camera.position.z = Math.cos(cursor.x*10)*3;
+  camera.position.x = Math.sin(cursor.x*Math.PI*2)*3;
+  camera.position.z = Math.cos(cursor.x*Math.PI*2)*3;
   camera.lookAt(mesh.position);
 
   renderer.render(scene, camera);
