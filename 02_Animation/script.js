@@ -1,7 +1,7 @@
 import * as THREE from "three";
-import { log } from "three/src/nodes/math/MathNode.js";
+import gsap from 'gsap'
 const canvas = document.querySelector(".webgl");
-/* console.log(canvas); */
+/*  console.log(gsap); */ 
 
 //scene
 const scene = new THREE.Scene();
@@ -36,17 +36,15 @@ renderer.render(scene, camera)
 //clock
 const clock=new THREE.Clock()
 //Animation
+gsap.to(mesh.position,{
+  duration:1,
+  delay:1,
+  x:2,
+})
 const tick=()=>{
-  const elapsedTime=clock.getElapsedTime()
 
 
-  //update object
-  //mesh.rotation.y=elapsedTime
-
-  camera.position.y=Math.sin(elapsedTime)
-  camera.position.x=Math.cos(elapsedTime)
-  camera.lookAt(mesh.position)
-  //render
+  
   renderer.render(scene, camera)
   window.requestAnimationFrame(tick)
 }
