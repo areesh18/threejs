@@ -17,11 +17,11 @@ const scene = new THREE.Scene();
 //object
 //Geometry
 const geometry = new THREE.BufferGeometry() 
-const positionsArray=new Float32Array([
-  0,0,0,
-  0,1,0,
-  1,0,0
-])
+const count=50;
+const positionsArray=new Float32Array(count*3*3);
+for(let i=0;i<count*3*3;i++){
+  positionsArray[i]=Math.random()
+}
 const positionsAttribute=new THREE.BufferAttribute(positionsArray,3)
 geometry.setAttribute('position',positionsAttribute)
 //material
